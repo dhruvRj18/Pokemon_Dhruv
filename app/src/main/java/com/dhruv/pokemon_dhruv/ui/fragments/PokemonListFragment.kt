@@ -2,7 +2,9 @@ package com.dhruv.pokemon_dhruv.ui.fragments
 
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -38,6 +40,10 @@ class PokemonListFragment : Fragment(R.layout.pokemon_list_fragment), PokemonLis
             layoutManager = GridLayoutManager(requireContext(), 3)
         }
 
+        if (pokemonListAdapter.differ.currentList.isEmpty()){
+            pokemonListViewmodel.getPokemonList()
+        }
+
         getPokemonList()
 
         checkForListEnd()
@@ -58,7 +64,7 @@ class PokemonListFragment : Fragment(R.layout.pokemon_list_fragment), PokemonLis
         pokemonBundle.putString(POKEMON_NAME,pokemonItem.pokemonName)
         pokemonBundle.putInt(POKEMON_NUMBER,pokemonItem.pokemonNumber)
         pokemonBundle.putString(POKEMON_URL,pokemonItem.pokemonImageUrl)
-        findNavController().navigate(R.id.action_pokemonListFragment2_to_pokemonStatsFragment,pokemonBundle)
+        findNavController().navigate(R.id.action_pokemonListFragment_to_pokemonStatsFragment,pokemonBundle)
     }
 
 
@@ -78,10 +84,10 @@ class PokemonListFragment : Fragment(R.layout.pokemon_list_fragment), PokemonLis
     }
 
     private fun getPokemonList() {
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 pokemonListViewmodel.pokemonlistState.collectLatest { pokemonList ->
-
                     pokemonListAdapter.differ.submitList(pokemonList)
 
                 }
@@ -94,7 +100,7 @@ class PokemonListFragment : Fragment(R.layout.pokemon_list_fragment), PokemonLis
             RecyclerView.OnScrollListener() {
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
+                if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN) ) {
                     pokemonListViewmodel.getPokemonList()
                 }
             }

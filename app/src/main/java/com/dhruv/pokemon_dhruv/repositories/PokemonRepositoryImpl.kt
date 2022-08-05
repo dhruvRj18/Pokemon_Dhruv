@@ -8,7 +8,6 @@ import com.dhruv.pokemon_dhruv.util.Resource
 import dagger.hilt.android.scopes.ActivityScoped
 import java.lang.Exception
 
-@ActivityScoped
 class PokemonRepositoryImpl(
     private val api: API
 ) : PokemonRepository {

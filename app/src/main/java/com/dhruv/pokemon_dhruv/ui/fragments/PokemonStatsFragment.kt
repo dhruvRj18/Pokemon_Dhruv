@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.dhruv.pokemon_dhruv.R
 import com.dhruv.pokemon_dhruv.databinding.PokemonStatsFragmentBinding
+import com.dhruv.pokemon_dhruv.ui.viewmodels.PokemonListViewmodel
 import com.dhruv.pokemon_dhruv.util.Constants.POKEMON_NAME
 import com.dhruv.pokemon_dhruv.util.Constants.POKEMON_NUMBER
 import com.dhruv.pokemon_dhruv.util.Constants.POKEMON_URL
@@ -16,6 +18,7 @@ import com.dhruv.pokemon_dhruv.util.Constants.POKEMON_URL
 class PokemonStatsFragment : Fragment(R.layout.pokemon_stats_fragment) {
 
     private lateinit var binding: PokemonStatsFragmentBinding
+    private  val viewmodel: PokemonListViewmodel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,7 +28,6 @@ class PokemonStatsFragment : Fragment(R.layout.pokemon_stats_fragment) {
         val pokemonURL = getArguments()?.getString(POKEMON_URL)
 
         Log.d("args" , "name : $pokemonName \n number : $pokemonNumber \n url : $pokemonURL")
-
 
     }
 
