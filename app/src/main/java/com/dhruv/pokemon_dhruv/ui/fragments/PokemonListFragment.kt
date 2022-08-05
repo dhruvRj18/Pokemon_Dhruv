@@ -37,6 +37,14 @@ class PokemonListFragment : Fragment(R.layout.pokemon_list_fragment) {
 
         checkForListEnd()
 
+        searchPokemon()
+
+
+
+
+    }
+
+    private fun searchPokemon() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -45,11 +53,10 @@ class PokemonListFragment : Fragment(R.layout.pokemon_list_fragment) {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-               return false
+                pokemonListViewmodel.searchPokemon(newText!!)
+                return true
             }
         })
-
-
     }
 
     private fun getPokemonList() {
