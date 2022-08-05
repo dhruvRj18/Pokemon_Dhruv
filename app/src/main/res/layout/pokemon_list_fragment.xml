@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/purple_200">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/searchCard"
@@ -27,7 +28,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pokemonListFragment"
+        android:id="@+id/pokemonListRCV"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"

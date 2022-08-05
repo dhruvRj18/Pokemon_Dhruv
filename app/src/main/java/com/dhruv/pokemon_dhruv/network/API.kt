@@ -9,7 +9,7 @@ import retrofit2.http.Query
 interface API {
 
     //API endpoints
-    @GET("pokemon/")
+    @GET("pokemon")
     suspend fun getListOfPokemon(
         @Query("limit") limit: Int,
         @Query("offset") offset: Int

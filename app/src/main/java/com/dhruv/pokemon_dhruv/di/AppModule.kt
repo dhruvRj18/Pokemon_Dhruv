@@ -1,6 +1,8 @@
 package com.dhruv.pokemon_dhruv.di
 
 import com.dhruv.pokemon_dhruv.network.API
+import com.dhruv.pokemon_dhruv.repositories.PokemonRepository
+import com.dhruv.pokemon_dhruv.repositories.PokemonRepositoryImpl
 import com.dhruv.pokemon_dhruv.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -34,4 +36,12 @@ object AppModule {
     @Provides
     @Singleton
     fun providesAPI(retrofit: Retrofit): API = retrofit.create(API::class.java)
+
+    @Provides
+    @Singleton
+    fun providesPokemonListRepository(api: API) : PokemonRepository{
+        return PokemonRepositoryImpl(api)
+    }
+
+
 }
