@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pokemonListFragment2">
+
+    <fragment
+        android:id="@+id/pokemonListFragment2"
+        android:name="com.dhruv.pokemon_dhruv.ui.fragments.PokemonListFragment"
+        android:label="PokemonListFragment" >
+        <action
+            android:id="@+id/action_pokemonListFragment2_to_pokemonStatsFragment"
+            app:destination="@id/pokemonStatsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pokemonStatsFragment"
+        android:name="com.dhruv.pokemon_dhruv.ui.fragments.PokemonStatsFragment"
+        android:label="PokemonStatsFragment" />
+</navigation>

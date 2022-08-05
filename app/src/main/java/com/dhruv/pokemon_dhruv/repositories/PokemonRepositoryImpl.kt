@@ -1,0 +1,26 @@
+package com.dhruv.pokemon_dhruv.repositories
+
+import android.util.Log
+import com.dhruv.pokemon_dhruv.model.Pokemon
+import com.dhruv.pokemon_dhruv.model.PokemonList
+import com.dhruv.pokemon_dhruv.network.API
+import com.dhruv.pokemon_dhruv.util.Resource
+import dagger.hilt.android.scopes.ActivityScoped
+import java.lang.Exception
+
+@ActivityScoped
+class PokemonRepositoryImpl(
+    private val api: API
+) : PokemonRepository {
+    override suspend fun getPokemonList(limit: Int, offset: Int): Resource<PokemonList> {
+        val response = try {
+            api.getListOfPokemon(limit = limit, offset = offset)
+        } catch (e: Exception) {
+            Log.d("Exception", "$e")
+            return Resource.Error("Something went wrong")
+        }
+        return Resource.Success(response)
+    }
+
+    override suspend fun getPokemonInfo(name: String): Pokemon = api.getPokemonInfo(name)
+}
