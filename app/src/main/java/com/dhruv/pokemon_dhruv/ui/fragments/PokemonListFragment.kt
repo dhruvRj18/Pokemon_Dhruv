@@ -1,10 +1,7 @@
 package com.dhruv.pokemon_dhruv.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -56,9 +53,6 @@ class PokemonListFragment : Fragment(R.layout.pokemon_list_fragment), PokemonLis
     }
 
     override fun onClick(position: Int) {
-        Log.d(
-            "clicked","$position"
-        )
        val pokemonItem =  pokemonListAdapter.differ.currentList[position]
         val pokemonBundle = Bundle()
         pokemonBundle.putString(POKEMON_NAME,pokemonItem.pokemonName)

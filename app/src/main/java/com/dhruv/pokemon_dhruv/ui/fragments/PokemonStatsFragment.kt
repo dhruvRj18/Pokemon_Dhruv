@@ -1,21 +1,16 @@
 package com.dhruv.pokemon_dhruv.ui.fragments
 
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.dhruv.pokemon_dhruv.R
 import com.dhruv.pokemon_dhruv.databinding.PokemonStatsFragmentBinding
 import com.dhruv.pokemon_dhruv.ui.viewmodels.PokemonInfoViewModel
-import com.dhruv.pokemon_dhruv.ui.viewmodels.PokemonListViewmodel
 import com.dhruv.pokemon_dhruv.util.Constants.POKEMON_NAME
 import com.dhruv.pokemon_dhruv.util.Constants.POKEMON_NUMBER
 import com.dhruv.pokemon_dhruv.util.Constants.POKEMON_URL
@@ -47,7 +42,7 @@ class PokemonStatsFragment : Fragment(R.layout.pokemon_stats_fragment) {
                 viewmodel.pokemonInfoState.collectLatest {
                     when(it){
                         is Resource.Success->{
-                            Log.d("data","${it.data}")
+
                             val pokemonInfo = it.data!!
 
                             for (i in pokemonInfo.stats.indices){

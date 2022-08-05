@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.dhruv.pokemon_dhruv.databinding.PokemonItemBinding
 import com.dhruv.pokemon_dhruv.model.MyPokemonList
-import com.dhruv.pokemon_dhruv.model.PokemonList
 
 class PokemonListAdapter(
     private val context: Context,

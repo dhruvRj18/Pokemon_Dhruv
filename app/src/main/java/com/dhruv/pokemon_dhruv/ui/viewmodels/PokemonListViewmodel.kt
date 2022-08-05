@@ -1,19 +1,14 @@
 package com.dhruv.pokemon_dhruv.ui.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dhruv.pokemon_dhruv.model.MyPokemonList
-import com.dhruv.pokemon_dhruv.model.Pokemon
-import com.dhruv.pokemon_dhruv.model.PokemonList
 import com.dhruv.pokemon_dhruv.repositories.PokemonRepository
 import com.dhruv.pokemon_dhruv.util.Constants.PAGE_SIZE
 import com.dhruv.pokemon_dhruv.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.lang.Error
 import javax.inject.Inject
 
 @HiltViewModel
