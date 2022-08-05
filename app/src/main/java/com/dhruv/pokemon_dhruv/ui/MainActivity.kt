@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import com.dhruv.pokemon_dhruv.R
 import com.dhruv.pokemon_dhruv.databinding.ActivityMainBinding
@@ -21,6 +22,11 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.findNavController()
-        NavigationUI.setupActionBarWithNavController(this,navController)
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        NavigationUI.setupWithNavController(binding.toolBar,navController,appBarConfiguration)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return super.onSupportNavigateUp()
     }
 }

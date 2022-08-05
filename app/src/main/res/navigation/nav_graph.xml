@@ -11,9 +11,18 @@
         <action
             android:id="@+id/action_pokemonListFragment2_to_pokemonStatsFragment"
             app:destination="@id/pokemonStatsFragment" />
+        <argument
+            android:name="itemPokemon"
+            app:argType="string"
+            android:defaultValue="@null"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/pokemonStatsFragment"
         android:name="com.dhruv.pokemon_dhruv.ui.fragments.PokemonStatsFragment"
-        android:label="PokemonStatsFragment" />
+        android:label="PokemonStatsFragment" >
+        <action
+            android:id="@+id/action_pokemonStatsFragment_to_pokemonListFragment2"
+            app:destination="@id/pokemonListFragment2" />
+    </fragment>
 </navigation>

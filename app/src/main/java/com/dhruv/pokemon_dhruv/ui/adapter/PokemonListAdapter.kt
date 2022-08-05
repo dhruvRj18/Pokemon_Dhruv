@@ -12,11 +12,18 @@ import com.dhruv.pokemon_dhruv.model.MyPokemonList
 import com.dhruv.pokemon_dhruv.model.PokemonList
 
 class PokemonListAdapter(
-    private val context: Context
+    private val context: Context,
+    private val listener: MyOnItemClickListener
 ) : RecyclerView.Adapter<PokemonListAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(val itemViewItemBinding: PokemonItemBinding) :
         RecyclerView.ViewHolder(itemViewItemBinding.root) {
+            init {
+                itemViewItemBinding.pokemonImage.setOnClickListener {
+                    val position = adapterPosition
+                    listener.onClick(position)
+                }
+            }
 
     }
 
@@ -47,8 +54,15 @@ class PokemonListAdapter(
         holder.itemViewItemBinding.apply {
             pokemonName.text = item.pokemonName
             Glide.with(context).load(item.pokemonImageUrl).centerCrop().circleCrop().into(pokemonImage)
+            pokemonCard.setOnClickListener {
+
+            }
         }
     }
 
     override fun getItemCount(): Int = differ.currentList.size
+
+    interface MyOnItemClickListener{
+        fun onClick(position: Int)
+    }
 }
