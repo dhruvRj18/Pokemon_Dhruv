@@ -7,7 +7,7 @@
     android:background="#22A78AC5">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/pokemonStateImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="24dp"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2">
+        app:layout_constraintTop_toBottomOf="@+id/pokemonStateImage">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -139,6 +139,7 @@
                 android:layout_marginTop="32dp"
                 android:text="HP"
                 android:textSize="15sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/materialTextView"
                 app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
 
@@ -146,16 +147,16 @@
                 android:id="@+id/hpIndicator"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
-                app:trackCornerRadius="10dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="32dp"
-                app:trackThickness="20dp"
                 android:layout_marginEnd="32dp"
                 android:progress="80"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/specialDefenseText"
-                app:layout_constraintTop_toBottomOf="@+id/materialTextView" />
+                app:layout_constraintStart_toEndOf="@+id/materialTextView"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextView"
+                app:trackCornerRadius="10dp"
+                app:trackThickness="20dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/attackText"
@@ -164,24 +165,25 @@
                 android:layout_marginTop="8dp"
                 android:text="attack"
                 android:textSize="15sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/hpText"
                 app:layout_constraintTop_toBottomOf="@+id/hpText" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/attackIndicator"
-                app:trackThickness="20dp"
                 android:layout_width="0dp"
-                app:trackCornerRadius="10dp"
-
                 android:layout_height="20dp"
-                android:layout_marginStart="8dp"
+
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:progress="80"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/specialDefenseText"
-                app:layout_constraintTop_toBottomOf="@+id/hpIndicator" />
+                app:layout_constraintStart_toEndOf="@+id/materialTextView"
+                app:layout_constraintTop_toBottomOf="@+id/hpIndicator"
+                app:trackCornerRadius="10dp"
+                app:trackThickness="20dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/defenseText"
@@ -190,24 +192,25 @@
                 android:layout_marginTop="8dp"
                 android:text="defense"
                 android:textSize="15sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/attackText"
                 app:layout_constraintTop_toBottomOf="@+id/attackText" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/defenceIndicator"
                 android:layout_width="0dp"
-                app:trackThickness="20dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:progress="80"
-                app:trackCornerRadius="10dp"
-
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
+
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/specialDefenseText"
-                app:layout_constraintTop_toBottomOf="@+id/attackIndicator" />
+                app:layout_constraintStart_toEndOf="@+id/materialTextView"
+                app:layout_constraintTop_toBottomOf="@+id/attackIndicator"
+                app:trackCornerRadius="10dp"
+                app:trackThickness="20dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/specialAttackText"
@@ -216,24 +219,25 @@
                 android:layout_marginTop="8dp"
                 android:text="special-attack"
                 android:textSize="15sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/defenseText"
                 app:layout_constraintTop_toBottomOf="@+id/defenseText" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/specialAttackIndicator"
-                app:trackThickness="20dp"
                 android:layout_width="0dp"
-                app:trackCornerRadius="10dp"
-
                 android:layout_height="20dp"
-                android:layout_marginStart="8dp"
+
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
                 android:progress="80"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/specialDefenseText"
-                app:layout_constraintTop_toBottomOf="@+id/defenceIndicator" />
+                app:layout_constraintStart_toEndOf="@+id/materialTextView"
+                app:layout_constraintTop_toBottomOf="@+id/defenceIndicator"
+                app:trackCornerRadius="10dp"
+                app:trackThickness="20dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/specialDefenseText"
@@ -242,24 +246,25 @@
                 android:layout_marginTop="8dp"
                 android:text="special-defense"
                 android:textSize="15sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/specialAttackText"
                 app:layout_constraintTop_toBottomOf="@+id/specialAttackText" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/specialDefenceIndicator"
-                app:trackThickness="20dp"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
-                app:trackCornerRadius="10dp"
-
                 android:progress="80"
+                android:visibility="gone"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/specialDefenseText"
-                app:layout_constraintTop_toBottomOf="@+id/specialAttackIndicator" />
+                app:layout_constraintStart_toEndOf="@+id/materialTextView"
+                app:layout_constraintTop_toBottomOf="@+id/specialAttackIndicator"
+                app:trackCornerRadius="10dp"
+                app:trackThickness="20dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/speedText"
@@ -268,24 +273,25 @@
                 android:layout_marginTop="8dp"
                 android:text="speed"
                 android:textSize="15sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/specialDefenseText"
                 app:layout_constraintTop_toBottomOf="@+id/specialDefenseText" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/speedIndicator"
-                app:trackThickness="20dp"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
-                app:trackCornerRadius="10dp"
-
                 android:progress="80"
+                android:visibility="gone"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/specialDefenseText"
-                app:layout_constraintTop_toBottomOf="@+id/specialDefenceIndicator" />
+                app:layout_constraintStart_toEndOf="@+id/materialTextView"
+                app:layout_constraintTop_toBottomOf="@+id/specialDefenceIndicator"
+                app:trackCornerRadius="10dp"
+                app:trackThickness="20dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/accuracyText"
@@ -294,24 +300,25 @@
                 android:layout_marginTop="8dp"
                 android:text="accuracy"
                 android:textSize="15sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/speedText"
                 app:layout_constraintTop_toBottomOf="@+id/speedText" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/accuracyIndicator"
-                app:trackThickness="20dp"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="8dp"
-                app:trackCornerRadius="10dp"
-
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
+
                 android:progress="80"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/specialDefenseText"
-                app:layout_constraintTop_toBottomOf="@+id/speedIndicator" />
+                app:layout_constraintStart_toEndOf="@+id/materialTextView"
+                app:layout_constraintTop_toBottomOf="@+id/speedIndicator"
+                app:trackCornerRadius="10dp"
+                app:trackThickness="20dp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/evasionText"
@@ -320,24 +327,25 @@
                 android:layout_marginTop="8dp"
                 android:text="evasion"
                 android:textSize="15sp"
+                android:visibility="gone"
                 app:layout_constraintStart_toStartOf="@+id/accuracyText"
                 app:layout_constraintTop_toBottomOf="@+id/accuracyText" />
 
             <com.google.android.material.progressindicator.LinearProgressIndicator
                 android:id="@+id/evasionIndicator"
-                app:trackThickness="20dp"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="32dp"
-                app:trackCornerRadius="10dp"
-
                 android:progress="80"
+                android:visibility="gone"
+
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/specialDefenseText"
-                app:layout_constraintTop_toBottomOf="@+id/accuracyIndicator" />
+                app:layout_constraintStart_toEndOf="@+id/materialTextView"
+                app:layout_constraintTop_toBottomOf="@+id/accuracyIndicator"
+                app:trackCornerRadius="10dp"
+                app:trackThickness="20dp" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

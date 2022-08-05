@@ -5,8 +5,6 @@ import com.dhruv.pokemon_dhruv.model.Pokemon
 import com.dhruv.pokemon_dhruv.model.PokemonList
 import com.dhruv.pokemon_dhruv.network.API
 import com.dhruv.pokemon_dhruv.util.Resource
-import dagger.hilt.android.scopes.ActivityScoped
-import java.lang.Exception
 
 class PokemonRepositoryImpl(
     private val api: API
@@ -21,5 +19,13 @@ class PokemonRepositoryImpl(
         return Resource.Success(response)
     }
 
-    override suspend fun getPokemonInfo(name: String): Pokemon = api.getPokemonInfo(name)
+    override suspend fun getPokemonInfo(name: String): Resource<Pokemon>  {
+        val response = try{
+            api.getPokemonInfo(name)
+        }catch (e:Exception){
+            Log.d("Exception", "$e")
+            return Resource.Error("Something went wrong")
+        }
+        return Resource.Success(response)
+    }
 }

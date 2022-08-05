@@ -7,5 +7,5 @@ import com.dhruv.pokemon_dhruv.util.Resource
 interface PokemonRepository {
 
     suspend fun getPokemonList(limit:Int,offset:Int):Resource<PokemonList>
-    suspend fun getPokemonInfo(name:String): Pokemon
+    suspend fun getPokemonInfo(name:String): Resource<Pokemon>
 }
