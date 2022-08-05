@@ -2,6 +2,7 @@ package com.dhruv.pokemon_dhruv.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -32,8 +33,26 @@ class PokemonListFragment : Fragment(R.layout.pokemon_list_fragment) {
             layoutManager = GridLayoutManager(requireContext(), 3)
         }
 
+        getPokemonList()
+
+        checkForListEnd()
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                pokemonListViewmodel.searchPokemon(query!!)
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+               return false
+            }
+        })
 
 
+    }
+
+    private fun getPokemonList() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 pokemonListViewmodel.pokemonlistState.collectLatest { pokemonList ->
@@ -43,17 +62,17 @@ class PokemonListFragment : Fragment(R.layout.pokemon_list_fragment) {
                 }
             }
         }
+    }
 
+    private fun checkForListEnd() {
         binding.pokemonListRCV.addOnScrollListener(object :
             RecyclerView.OnScrollListener() {
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-               if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN)){
-                   pokemonListViewmodel.getPokemonList()
-               }
+                if (!recyclerView.canScrollVertically(RecyclerView.FOCUS_DOWN)) {
+                    pokemonListViewmodel.getPokemonList()
+                }
             }
         })
-
-
     }
 }
