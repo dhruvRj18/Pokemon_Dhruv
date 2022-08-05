@@ -25,9 +25,13 @@ class PokemonListViewmodel @Inject constructor(
     private val _pokemonlistState =
         MutableStateFlow<List<MyPokemonList>>(listOf())
     val pokemonlistState = _pokemonlistState
-    var loadError = MutableStateFlow<String>("")
+    var loadError = MutableStateFlow("")
     var isLoading = MutableStateFlow(false)
     var endOfList = MutableStateFlow(false)
+
+    var isSearching = MutableStateFlow(false)
+    private var isSearchStarted = true
+    private var cachedList = listOf<MyPokemonList>()
 
 
     init {
@@ -41,7 +45,7 @@ class PokemonListViewmodel @Inject constructor(
         when (result) {
             is Resource.Success -> {
                 endOfList.value = page * PAGE_SIZE >= result.data!!.count
-                val pokemonList = result.data.results.mapIndexed { index, result ->
+                val pokemonList = result.data.results.mapIndexed { _, result ->
                     val pokemonNumber = if (result.url.endsWith("/")) {
                         result.url.dropLast(1).takeLastWhile { it.isDigit() }
                     } else {
@@ -68,6 +72,32 @@ class PokemonListViewmodel @Inject constructor(
         }
 
     }
+
+    fun searchPokemon(query: String) {
+        val listToSearch = if (isSearchStarted) {
+            _pokemonlistState.value
+        } else {
+            cachedList
+        }
+        viewModelScope.launch {
+            if (query.isEmpty()){
+                _pokemonlistState.value = cachedList
+                isSearching.value = false
+                isSearchStarted = true
+                return@launch
+            }
+            val results = listToSearch.filter {
+                it.pokemonName.contains(query.trim(), ignoreCase = true || it.pokemonNumber.toString() == query.trim())
+            }
+            if (isSearchStarted){
+                cachedList = _pokemonlistState.value
+                isSearchStarted = false
+            }
+            _pokemonlistState.value = results
+            isSearching.value = true
+        }
+    }
+
 }
 
 
